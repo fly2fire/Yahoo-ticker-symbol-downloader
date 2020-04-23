@@ -7,6 +7,7 @@ import io
 
 from ytd import SimpleSymbolDownloader
 from ytd.downloader.GenericDownloader import GenericDownloader
+from ytd.downloader.TigerDownloader import TigerDownloader
 from ytd.compat import text
 from ytd.compat import csv
 from ytd.compat import robotparser
@@ -18,7 +19,8 @@ import sys
 user_agent = SimpleSymbolDownloader.user_agent
 
 options = {
-    "generic": GenericDownloader()
+    "generic": GenericDownloader(),
+    "tiger": TigerDownloader()
 }
 
 
@@ -67,7 +69,7 @@ def main():
     parser.add_argument("-i", "--insecure", help="use HTTP instead of HTTPS", action="store_true")
     parser.add_argument("-e", "--export", help="export immediately without downloading (Only useful if you already downloaded something to the .pickle file)", action="store_true")
     parser.add_argument('-E', '--Exchange', help='Only export ticker symbols from this exchange (the filtering is done during the export phase)')
-    parser.add_argument('type', nargs='?', default='generic', help='The type to download, this can be: '+" ".join(list(options.keys())))
+    parser.add_argument('type', nargs='?', default='tiger', help='The type to download, this can be: '+" ".join(list(options.keys())))
     parser.add_argument("-s", "--sleep", help="The time to sleep in seconds between requests", type=float, default=0)
     parser.add_argument("-p", "--pandantic", help="Stop and warn the user if some rare assertion fails", action="store_true")
 

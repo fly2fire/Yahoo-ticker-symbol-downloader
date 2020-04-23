@@ -115,7 +115,7 @@ class SymbolDownloader:
             self.symbols[symbol.ticker] = symbol
 
         # There is no pagination with this API.
-				# If we receive 10 results, we assume there are more than 10 and add another layer of queries to narrow the search further
+		# If we receive 10 results, we assume there are more than 10 and add another layer of queries to narrow the search further
         if(count == 10):
             self._add_queries(self.current_q)
         elif(count > 10):
